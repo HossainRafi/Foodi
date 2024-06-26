@@ -1,3 +1,6 @@
+import banner from "/images/home/banner.png";
+import floatingImg from "/images/home/b-food1.png";
+
 export const Banner = () => {
   return (
     <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
@@ -18,7 +21,18 @@ export const Banner = () => {
         </div>
 
         {/* image section (right) */}
-        <div className="md:w-1/2">Right</div>
+        <div className="md:w-1/2">
+          <img src={banner} />
+
+          <div>
+            <div>
+              <img src={floatingImg} className="rounded-2xl" />
+              <div>
+                <h5 className="capitalize ">spicy noodles</h5>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
