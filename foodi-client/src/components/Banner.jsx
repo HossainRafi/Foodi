@@ -5,26 +5,10 @@ import floatingImg2 from "/images/home/b-food2.png";
 export const Banner = () => {
   return (
     <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
-      <div className="py-20 flex flex-col md:flex-row justify-between items-center gap-8">
-        {/* text section (left) */}
-        <div className="md:w-1/2 space-y-7 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold md:leading-snug leading-snug capitalize">
-            dive into delights of delectable{" "}
-            <span className="text-green">food</span>
-          </h2>
-          <p className="capitalize text-xl text-[#4A4A4A]">
-            where each plate weaves a story of culinary mastery & passionate
-            craftsmanship
-          </p>
-          <button className="btn bg-green px-8 py-3 font-semibold text-white rounded-full capitalize">
-            order now
-          </button>
-        </div>
-
-        {/* image section (right) */}
+      <div className="py-16 flex flex-col md:flex-row-reverse justify-between items-center gap-8">
+        {/* image section */}
         <div className="md:w-1/2">
           <img src={banner} />
-
           <div className="flex items-center justify-around flex-col md:flex-row -mt-14 gap-4">
             <div className="flex bg-white py-1 px-1 rounded-2xl items-center gap-3 shadow-md w-60">
               <img src={floatingImg1} className="rounded-2xl h-[80px]" />
@@ -62,7 +46,7 @@ export const Banner = () => {
                 <p className="text-red">$15.00</p>
               </div>
             </div>
-            <div className="flex bg-white py-1 px-1 rounded-2xl items-center gap-3 shadow-md w-60">
+            <div className="sm:flex hidden bg-white py-1 px-1 rounded-2xl items-center gap-3 shadow-md w-60">
               <img src={floatingImg2} className="rounded-2xl h-[80px]" />
               <div className="space-y-0">
                 <h5 className="capitalize font-medium mb-1">egg fruit salad</h5>
@@ -99,6 +83,20 @@ export const Banner = () => {
               </div>
             </div>
           </div>
+        </div>
+        {/* text section (left) */}
+        <div className="md:w-1/2 space-y-7 px-4">
+          <h2 className="text-4xl md:text-5xl font-bold md:leading-snug leading-snug capitalize">
+            dive into delights of delectable{" "}
+            <span className="text-green">food</span>
+          </h2>
+          <p className="capitalize text-xl text-[#4A4A4A]">
+            where each plate weaves a story of culinary mastery & passionate
+            craftsmanship
+          </p>
+          <button className="btn bg-green px-8 py-3 font-semibold text-white rounded-full capitalize">
+            order now
+          </button>
         </div>
       </div>
     </div>
