@@ -6,7 +6,7 @@ import { Cards } from "../../components/Cards";
 import React, { useEffect, useState } from "react";
 
 // next arrow function
-const simpleNextArrow = (props) => {
+const SampleNextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <div
@@ -20,7 +20,7 @@ const simpleNextArrow = (props) => {
 };
 
 // previous arrow function
-const simplePrevArrow = (props) => {
+const SamplePrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <div
@@ -28,7 +28,7 @@ const simplePrevArrow = (props) => {
       style={{ ...style, display: "block", background: "green" }}
       onClick={onClick}
     >
-      PREV
+      BACK
     </div>
   );
 };
@@ -81,21 +81,22 @@ export const SpecialDishes = () => {
         },
       },
     ],
-    
-    nextArrow: <simpleNextArrow />,
-    prevArrow: <simplePrevArrow />,
+
+    // using next & prev arrow functions
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
 
   return (
     <div className="section-container my-20 relative">
       {/* heading section */}
-      <div className="text-left pb-16">
+      <div className="text-left ">
         <p className="subtitle">special dishes</p>
         <h2 className="title md:w-[520px]">standout dishes from our menu</h2>
       </div>
 
       {/* carousel arrow button */}
-      <div className="md:absolute right-8 top-48 md:mr-24">
+      <div className="md:absolute right-8 top-32 md:mr-24">
         <button
           onClick={() => slider?.current?.slickPrev()}
           className="btn p-2 rounded-full ml-5 bg-green"

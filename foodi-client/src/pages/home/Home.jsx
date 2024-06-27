@@ -1,6 +1,7 @@
 import { Banner } from "../../components/Banner";
 import { Categories } from "./Categories";
 import { SpecialDishes } from "./SpecialDishes";
+import { Testimonials } from "./Testimonials";
 
 export const Home = () => {
   return (
@@ -8,6 +9,7 @@ export const Home = () => {
       <Banner />
       <Categories />
       <SpecialDishes />
+      <Testimonials />
     </>
   );
 };
