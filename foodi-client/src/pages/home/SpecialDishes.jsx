@@ -1,8 +1,9 @@
 import Slider from "react-slick";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React, { useEffect, useState } from "react";
 import { Cards } from "../../components/Cards";
+import React, { useEffect, useState } from "react";
 
 // next arrow function
 const simpleNextArrow = (props) => {
@@ -80,36 +81,41 @@ export const SpecialDishes = () => {
         },
       },
     ],
-
+    
     nextArrow: <simpleNextArrow />,
     prevArrow: <simplePrevArrow />,
   };
 
   return (
-    <div className="section-container my-20">
+    <div className="section-container my-20 relative">
       {/* heading section */}
-      <div className="text-left">
+      <div className="text-left pb-16">
         <p className="subtitle">special dishes</p>
         <h2 className="title md:w-[520px]">standout dishes from our menu</h2>
       </div>
 
-      <div>
+      {/* carousel arrow button */}
+      <div className="md:absolute right-8 top-48 md:mr-24">
         <button
           onClick={() => slider?.current?.slickPrev()}
-          className="btn p-2 rounded-full ml-5"
+          className="btn p-2 rounded-full ml-5 bg-green"
         >
-          Prev
+          <FaAngleLeft className="w-8 h-8 p-1" />
         </button>
         <button
           onClick={() => slider?.current?.slickNext()}
-          className="btn p-2 rounded-full ml-5"
+          className="btn p-2 rounded-full ml-5 bg-green"
         >
-          Next
+          <FaAngleRight className="w-8 h-8 p-1" />
         </button>
       </div>
 
       {/* carousel slider */}
-      <Slider ref={slider} {...settings}>
+      <Slider
+        ref={slider}
+        {...settings}
+        className="overflow-hidden mt-10 space-x-5"
+      >
         {recipes.map((item, i) => (
           <Cards item={item} key={i} />
         ))}
