@@ -4,25 +4,25 @@ export const Categories = () => {
     {
       id: 1,
       title: "Main Dish",
-      despriction: "(86 dishes)",
+      desc: "(86 dishes)",
       image: "/images/home/category/img1.png",
     },
     {
       id: 2,
       title: "Break Fast",
-      despriction: "(12 break fast)",
+      desc: "(12 break fast)",
       image: "/images/home/category/img2.png",
     },
     {
       id: 3,
       title: "Dessert",
-      despriction: "(48 dessert)",
+      desc: "(48 dessert)",
       image: "/images/home/category/img3.png",
     },
     {
       id: 4,
       title: "Browse All",
-      despriction: "(255 Items)",
+      desc: "(255 Items)",
       image: "/images/home/category/img4.png",
     },
   ];
@@ -35,7 +35,22 @@ export const Categories = () => {
       </div>
 
       {/* card section */}
-      <div></div>
+      <div>
+        {categoryItems.map((item, index) => (
+          <div key={index}>
+            <div>
+              <img
+                src={item.image}
+                className="bg-[#C1F1C6] p-5 rounded-full w-28 h-28"
+              />
+            </div>
+            <div>
+              <h5>{item.title}</h5>
+              <p>{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
