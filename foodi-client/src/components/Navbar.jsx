@@ -1,7 +1,25 @@
+import { useEffect, useState } from "react";
 import logo from "/logo.png";
 import { BiPhoneCall } from "react-icons/bi";
 
 export const Navbar = () => {
+  // scroll effect for navbar
+  const [isSticky, setSticky] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 0) {
+        setSticky(true);
+      } else {
+        setSticky(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.addEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   // navigation item lists
   const navItems = (
     <>
@@ -47,8 +65,14 @@ export const Navbar = () => {
   );
   return (
     <>
-      <header className="max-w-screen-2xl container mx-auto">
-        <div className="navbar xl:px-24">
+      <header className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out">
+        <div
+          className={`navbar xl:px-24 ${
+            isSticky
+              ? "shadow-md bg-base-100 transition-all duration-300 ease-in-out"
+              : ""
+          }`}
+        >
           <div className="navbar-start">
             <div className="dropdown">
               <div
@@ -127,7 +151,9 @@ export const Navbar = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item font-bold">5</span>
+                <span className="badge badge-sm indicator-item font-bold">
+                  5
+                </span>
               </div>
             </div>
 
