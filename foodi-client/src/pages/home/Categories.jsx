@@ -30,7 +30,7 @@ export const Categories = () => {
     <section className="section-container py-16">
       {/* heading section */}
       <div className="text-center">
-        <p className="subtitle">customers favourites</p>
+        <p className="subtitle">customers favourite</p>
         <h2 className="title">popular categories</h2>
       </div>
 

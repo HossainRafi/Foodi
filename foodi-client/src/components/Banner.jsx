@@ -5,7 +5,7 @@ import floatingImg2 from "/images/home/b-food2.png";
 export const Banner = () => {
   return (
     <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
-      <div className="py-16 flex flex-col md:flex-row-reverse justify-between items-center gap-8">
+      <div className="py-24 flex flex-col md:flex-row-reverse justify-between items-center gap-8">
         {/* image section */}
         <div className="md:w-1/2">
           <img src={banner} />

@@ -1,11 +1,13 @@
 import { Banner } from "../../components/Banner";
 import { Categories } from "./Categories";
+import { SpecialDishes } from "./SpecialDishes";
 
 export const Home = () => {
   return (
-    <div>
+    <>
       <Banner />
       <Categories />
-    </div>
+      <SpecialDishes />
+    </>
   );
 };
