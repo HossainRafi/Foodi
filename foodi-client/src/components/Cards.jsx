@@ -31,7 +31,7 @@ export const Cards = ({ item }) => {
         <h2 className="card-title">{item.name}</h2>
         <p>description of the item</p>
         <div className="card-actions justify-between items-center mt-2">
-          <h5 className="font-semibold">
+          <h5 className="sm:text-xl md:text-2xl font-semibold">
             <span className="text-md text-red">$ </span>
             {item.price}
           </h5>
