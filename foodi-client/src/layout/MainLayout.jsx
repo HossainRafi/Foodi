@@ -1,14 +1,16 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import "../App.css";
+import { Footer } from "../components/Footer";
 
 export const MainLayout = () => {
   return (
     <div>
       <Navbar />
 
-      {/* all content of this website will render under this <Outlet/> component */}
       <Outlet />
+
+      <Footer />
     </div>
   );
 };
