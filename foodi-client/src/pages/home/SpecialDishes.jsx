@@ -4,6 +4,34 @@ import "slick-carousel/slick/slick-theme.css";
 import React, { useEffect, useState } from "react";
 import { Cards } from "../../components/Cards";
 
+// next arrow function
+const simpleNextArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "red" }}
+      onClick={onClick}
+    >
+      NEXT
+    </div>
+  );
+};
+
+// previous arrow function
+const simplePrevArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "green" }}
+      onClick={onClick}
+    >
+      PREV
+    </div>
+  );
+};
+
 export const SpecialDishes = () => {
   const [recipes, setRecipes] = useState([]);
   const slider = React.useRef(null);
@@ -52,6 +80,9 @@ export const SpecialDishes = () => {
         },
       },
     ],
+
+    nextArrow: <simpleNextArrow />,
+    prevArrow: <simplePrevArrow />,
   };
 
   return (
@@ -61,13 +92,27 @@ export const SpecialDishes = () => {
         <p className="subtitle">special dishes</p>
         <h2 className="title md:w-[520px]">standout dishes from our menu</h2>
       </div>
+
+      <div>
+        <button
+          onClick={() => slider?.current?.slickPrev()}
+          className="btn p-2 rounded-full ml-5"
+        >
+          Prev
+        </button>
+        <button
+          onClick={() => slider?.current?.slickNext()}
+          className="btn p-2 rounded-full ml-5"
+        >
+          Next
+        </button>
+      </div>
+
       {/* carousel slider */}
-      <Slider {...settings}>
-        {
-          recipes.map((item,i)=>(
-            <Cards item={item} key={i}/>
-          ))
-        }
+      <Slider ref={slider} {...settings}>
+        {recipes.map((item, i) => (
+          <Cards item={item} key={i} />
+        ))}
       </Slider>
     </div>
   );
