@@ -9,8 +9,8 @@ export const Categories = () => {
     },
     {
       id: 2,
-      title: "Break Fast",
-      desc: "(12 break fast)",
+      title: "Breakfast",
+      desc: "(12 breakfast)",
       image: "/images/home/category/img2.png",
     },
     {
@@ -35,16 +35,19 @@ export const Categories = () => {
       </div>
 
       {/* card section */}
-      <div>
+      <div className="flex flex-col sm:flex-row flex-wrap gap-8 justify-around items-center mt-12">
         {categoryItems.map((item, index) => (
-          <div key={index}>
-            <div>
+          <div
+            key={index}
+            className="shadow-lg rounded-md bg-white py-6 px-5 w-72 mx-auto text-center cursor-pointer hover:-translate-y-4 duration-300 transition-all border border-[#C1F1C6]"
+          >
+            <div className="flex w-full mx-auto items-center justify-center">
               <img
                 src={item.image}
                 className="bg-[#C1F1C6] p-5 rounded-full w-28 h-28"
               />
             </div>
-            <div>
+            <div className="mt-5 space-y-2">
               <h5>{item.title}</h5>
               <p>{item.desc}</p>
             </div>
