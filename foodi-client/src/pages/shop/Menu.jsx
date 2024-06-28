@@ -98,10 +98,10 @@ export const Menu = () => {
           <div className="flex flex-row justify-start md:items-center md:gap-8 gap-4 flex-wrap">
             <button onClick={showAll}>All</button>
             <button onClick={() => filterItems("salad")}>Salad</button>
-            <button>Pizza</button>
-            <button>Soups</button>
-            <button>Desserts</button>
-            <button>Drinks</button>
+            <button onClick={() => filterItems("pizza")}>Pizza</button>
+            <button onClick={() => filterItems("soup")}>Soups</button>
+            <button onClick={() => filterItems("dessert")}>Desserts</button>
+            <button onClick={() => filterItems("drinks")}>Drinks</button>
           </div>
         </div>
 
