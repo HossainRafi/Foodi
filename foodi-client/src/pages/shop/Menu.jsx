@@ -7,25 +7,25 @@ export const Menu = () => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortOption, setSortOption] = useState("default");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(12); // Number of items to display per page
 
-  // loading data
   useEffect(() => {
-    // fetching data from backend
+    // Fetch data from the backend
     const fetchData = async () => {
       try {
         const response = await fetch("/menu.json");
         const data = await response.json();
-        // console.log(data)
         setMenu(data);
-        setFilteredItems(data);
+        setFilteredItems(data); // Initially, display all items
       } catch (error) {
-        console.log("error fetching error", error);
+        console.error("Error fetching data:", error);
       }
     };
+
     fetchData();
   }, []);
 
-  // filtering data based on category
   const filterItems = (category) => {
     const filtered =
       category === "all"
@@ -34,21 +34,21 @@ export const Menu = () => {
 
     setFilteredItems(filtered);
     setSelectedCategory(category);
+    setCurrentPage(1);
   };
 
-  // show all data
   const showAll = () => {
     setFilteredItems(menu);
     setSelectedCategory("all");
+    setCurrentPage(1);
   };
 
-  // sorting based on A-Z, Low-Htgh pricing
   const handleSortChange = (option) => {
     setSortOption(option);
 
+    // Logic for sorting based on the selected option
     let sortedItems = [...filteredItems];
 
-    // sorting logic
     switch (option) {
       case "A-Z":
         sortedItems.sort((a, b) => a.name.localeCompare(b.name));
@@ -60,14 +60,24 @@ export const Menu = () => {
         sortedItems.sort((a, b) => a.price - b.price);
         break;
       case "high-to-low":
-        sortedItems.sort((a, b) => b.name.localeCompare(a.name));
+        sortedItems.sort((a, b) => b.price - a.price);
         break;
       default:
+        // Do nothing for the "default" case
         break;
     }
 
     setFilteredItems(sortedItems);
+    setCurrentPage(1);
   };
+
+  //   console.log(filteredItems);
+  // Pagination logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
@@ -91,12 +101,11 @@ export const Menu = () => {
         </div>
       </div>
 
-      {/* menu category */}
+      {/* menu shop  */}
       <div className="section-container">
-        {/* menu sorting filter btns */}
-        <div>
-          {/* all category btns */}
-          <div className="flex flex-row justify-start md:items-center md:gap-8 gap-4 flex-wrap">
+        <div className="flex flex-col md:flex-row flex-wrap md:justify-between items-center space-y-3 mb-8">
+          {/* all category buttons */}
+          <div className="flex flex-row justify-start md:items-center md:gap-8 gap-4  flex-wrap">
             <button
               onClick={showAll}
               className={selectedCategory === "all" ? "active" : ""}
@@ -156,11 +165,28 @@ export const Menu = () => {
         </div>
 
         {/* product card */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
-          {filteredItems.map((item) => (
+        <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4">
+          {currentItems.map((item) => (
             <Cards key={item._id} item={item} />
           ))}
         </div>
+      </div>
+
+      {/* Pagination */}
+      <div className="flex justify-center my-8">
+        {Array.from({
+          length: Math.ceil(filteredItems.length / itemsPerPage),
+        }).map((_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => paginate(index + 1)}
+            className={`mx-1 px-3 py-1 rounded-full ${
+              currentPage === index + 1 ? "bg-green text-white" : "bg-gray-200"
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
     </div>
   );
