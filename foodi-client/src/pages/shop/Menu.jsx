@@ -92,8 +92,18 @@ export const Menu = () => {
 
       {/* menu category */}
       <div className="section-container">
-        {/* filter btn sorting */}
-        <div>filtering and sorting</div>
+        {/* menu sorting filter btns */}
+        <div>
+          {/* all category btns */}
+          <div className="flex flex-row justify-start md:items-center md:gap-8 gap-4 flex-wrap">
+            <button onClick={showAll}>All</button>
+            <button onClick={() => filterItems("salad")}>Salad</button>
+            <button>Pizza</button>
+            <button>Soups</button>
+            <button>Desserts</button>
+            <button>Drinks</button>
+          </div>
+        </div>
 
         {/* product card */}
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
