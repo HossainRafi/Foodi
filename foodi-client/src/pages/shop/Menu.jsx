@@ -1,3 +1,4 @@
+import { FaFilter } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Cards } from "../../components/Cards";
 
@@ -132,6 +133,20 @@ export const Menu = () => {
             >
               Drinks
             </button>
+          </div>
+
+          {/* sorting filter */}
+          <div>
+            <FaFilter className="text-white h-4 w-4" />
+
+            {/* sorting options */}
+            <select name="sort" id="sort">
+              <option value="default"> Default</option>
+              <option value="A-Z">A-Z</option>
+              <option value="Z-A">Z-A</option>
+              <option value="low-to-high">Low to High</option>
+              <option value="high-to-low">High to Low</option>
+            </select>
           </div>
         </div>
 
