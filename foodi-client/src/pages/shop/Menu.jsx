@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Cards } from "../../components/Cards";
 
 export const Menu = () => {
   const [menu, setMenu] = useState([]);
@@ -63,32 +64,44 @@ export const Menu = () => {
       default:
         break;
     }
+
+    setFilteredItems(sortedItems);
   };
 
   return (
     <div>
       {/* menu banner */}
-      <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
-        <div className="py-48 flex flex-col justify-center items-center gap-8">
-          {/* text section */}
-          <div className="text-center space-y-7 px-4">
-            <h2 className="text-4xl md:text-5xl font-bold md:leading-snug leading-snug capitalize">
-              for the love of delicious <span className="text-green">food</span>
+      <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 bg-gradient-to-r from-0% from-[#FAFAFA] to-[#FCFCFC] to-100%">
+        <div className="py-48 flex flex-col items-center justify-center">
+          {/* content */}
+          <div className=" text-center px-4 space-y-7">
+            <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug">
+              For the Love of Delicious <span className="text-green">Food</span>
             </h2>
-            <p className="md:w-4/5 mx-auto text-xl text-[#4A4A4A]">
+            <p className="text-[#4A4A4A] text-xl md:w-4/5 mx-auto">
               Come with family & feel the joy of mouthwatering food such as
               Greek Salad, Lasagne, Butternut Pumpkin, Tokusen Wagyu, Olivas
               Rellenas and more for a moderate cost
             </p>
-            <button className="btn bg-green px-8 py-3 font-semibold text-white rounded-full capitalize">
-              order now
+            <button className="bg-green font-semibold btn text-white px-8 py-3 rounded-full">
+              Order Now
             </button>
           </div>
         </div>
       </div>
 
       {/* menu category */}
-      <div className="section-container"></div>
+      <div className="section-container">
+        {/* filter btn sorting */}
+        <div>filtering and sorting</div>
+
+        {/* product card */}
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+          {filteredItems.map((item) => (
+            <Cards key={item._id} item={item} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
