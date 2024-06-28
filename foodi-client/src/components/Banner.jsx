@@ -1,17 +1,16 @@
-import banner from "/images/home/banner.png";
-import floatingImg1 from "/images/home/b-food1.png";
-import floatingImg2 from "/images/home/b-food2.png";
-
 export const Banner = () => {
   return (
     <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
       <div className="py-24 flex flex-col md:flex-row-reverse justify-between items-center gap-8">
         {/* image section */}
         <div className="md:w-1/2">
-          <img src={banner} />
+          <img src="/images/home/banner.png" />
           <div className="flex items-center justify-around flex-col md:flex-row -mt-14 gap-4">
             <div className="flex bg-white py-1 px-1 rounded-2xl items-center gap-3 shadow-md w-60">
-              <img src={floatingImg1} className="rounded-2xl h-[80px]" />
+              <img
+                src="/images/home/b-food1.png"
+                className="rounded-2xl h-[80px]"
+              />
               <div className="space-y-0">
                 <h5 className="capitalize font-medium mb-1">vegitable salad</h5>
                 {/* ratting div */}
@@ -51,7 +50,10 @@ export const Banner = () => {
               </div>
             </div>
             <div className="sm:flex hidden bg-white py-1 px-1 rounded-2xl items-center gap-3 shadow-md w-60">
-              <img src={floatingImg2} className="rounded-2xl h-[80px]" />
+              <img
+                src="/images/home/b-food2.png"
+                className="rounded-2xl h-[80px]"
+              />
               <div className="space-y-0">
                 <h5 className="capitalize font-medium mb-1">egg fruit salad</h5>
                 {/* ratting div */}
