@@ -1,20 +1,44 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const Menu = () => {
+  const [menu, setMenu] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [sortOption, setSortOption] = useState("default");
+
   // loading data
-  useEffect(()=>{
+  useEffect(() => {
     // fetching data from backend
-    const fetchData=async()=>{
-      try{
-        const response=await fetch("/menu.json")
-        const data=await response.json()
-        console.log(data)
-      }catch(error){
-        console.log("error fetching error", error)
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/menu.json");
+        const data = await response.json();
+        // console.log(data)
+        setMenu(data);
+        setFilteredItems(data);
+      } catch (error) {
+        console.log("error fetching error", error);
       }
-    }
-    fetchData()
-  },[])
+    };
+    fetchData();
+  }, []);
+
+  // filtering data based on category
+  const filterItems = (category) => {
+    const filtered =
+      category === "all"
+        ? menu
+        : menu.filter((item) => item.category === category);
+
+    setFilteredItems(filtered);
+    setSelectedCategory(category);
+  };
+
+  // show all data
+  const showAll = () => {
+    setFilteredItems(menu);
+    setSelectedCategory("all");
+  };
 
   return (
     <div>
