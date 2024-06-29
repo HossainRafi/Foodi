@@ -35,7 +35,6 @@ export const Login = () => {
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
-                  required
                   {...register("email")}
                 />
               </div>
@@ -49,7 +48,6 @@ export const Login = () => {
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
-                  required
                   {...register("password")}
                 />
                 <label className="label mt-1">

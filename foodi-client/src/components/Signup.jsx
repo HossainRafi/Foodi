@@ -1,6 +1,7 @@
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Login } from "./Login";
+import { Link } from "react-router-dom";
 
 export const Signup = () => {
   const {
@@ -31,7 +32,6 @@ export const Signup = () => {
               type="email"
               placeholder="email"
               className="input input-bordered"
-              required
               {...register("email")}
             />
           </div>
@@ -45,7 +45,6 @@ export const Signup = () => {
               type="password"
               placeholder="password"
               className="input input-bordered"
-              required
               {...register("password")}
             />
             <label className="label mt-1">
@@ -75,6 +74,12 @@ export const Signup = () => {
               Login
             </button>{" "}
           </p>
+          <Link
+            to="/"
+            className="btn btn-md btn-circle btn-ghost absolute right-10 top-8 font-bold text-xl"
+          >
+            ✕
+          </Link>
         </form>
 
         <div className="text-center space-x-3 mb-5 flex items-center justify-center">
