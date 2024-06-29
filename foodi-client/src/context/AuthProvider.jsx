@@ -4,6 +4,8 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
+  updateProfile,
 } from "firebase/auth";
 import { createContext, useState } from "react";
 import app from "./../firebase/firebase.config";
@@ -32,13 +34,26 @@ export const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  
+  // logout
+  const logOut = () => {
+    signOut(auth);
+  };
+
+  // update profile
+  const updateUserProfile = ({ name, photoURL }) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoURL,
+    });
+  };
 
   const authInfo = {
     user,
+    login,
+    logOut,
     createUser,
     signupWithGmail,
-    login,
+    updateUserProfile,
   };
 
   return (
