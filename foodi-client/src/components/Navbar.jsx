@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { FaRegUser } from "react-icons/fa";
+import { Modal } from "./Modal";
 import logo from "/logo.png";
-import { BiPhoneCall } from "react-icons/bi";
 
 export const Navbar = () => {
   // scroll effect for navbar
@@ -24,7 +25,9 @@ export const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <a href="/" className="text-green">Home</a>
+        <a href="/" className="text-green">
+          Home
+        </a>
       </li>
       <li>
         <details>
@@ -157,10 +160,14 @@ export const Navbar = () => {
               </div>
             </div>
 
-            {/* contact btn */}
-            <a className="btn bg-green rounded-full px-4 text-white flex items-center gap-2 text-lg">
-              <BiPhoneCall className="text-xl" /> Contact
-            </a>
+            {/* login btn */}
+            <button
+              onClick={() => document.getElementById("my_modal_5").showModal()}
+              className="btn bg-green rounded-full px-4 text-white flex items-center gap-2 text-lg"
+            >
+              <FaRegUser className="text-xl" /> Login
+            </button>
+            <Modal />
           </div>
         </div>
       </header>
