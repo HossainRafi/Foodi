@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { Login } from "./Login";
 
 export const Signup = () => {
   const {
@@ -67,13 +68,13 @@ export const Signup = () => {
           </div>
 
           <p className="text-center my-2">
-            Don't have an account?{" "}
-            <Link
-              to="/signup"
+            Have an account?{" "}
+            <button
+              onClick={() => document.getElementById("my_modal_5").showModal()}
               className="text-green ml-1 bg-gray-100 p-1 rounded font-medium"
             >
-              Signup
-            </Link>{" "}
+              Login
+            </button>{" "}
           </p>
         </form>
 
@@ -83,6 +84,7 @@ export const Signup = () => {
             <FaGoogle />
           </button>
         </div>
+        <Login/>
       </div>
     </div>
   );
