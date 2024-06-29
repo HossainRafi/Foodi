@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Login } from "./Login";
@@ -84,7 +83,7 @@ export const Signup = () => {
             <FaGoogle />
           </button>
         </div>
-        <Login/>
+        <Login />
       </div>
     </div>
   );
