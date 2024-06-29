@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
-import { Modal } from "./Modal";
+import { Login } from "./Login";
 import logo from "/logo.png";
 
 export const Navbar = () => {
@@ -167,7 +167,7 @@ export const Navbar = () => {
             >
               <FaRegUser className="text-xl" /> Login
             </button>
-            <Modal />
+            <Login />
           </div>
         </div>
       </header>

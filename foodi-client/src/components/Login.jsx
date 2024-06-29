@@ -2,13 +2,15 @@ import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 
-export const Modal = () => {
+export const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => console.log(data);
+
   return (
     <div>
       <dialog id="my_modal_5" className="modal modal-middle sm:modal-middle">
@@ -20,7 +22,9 @@ export const Modal = () => {
               className="card-body"
               method="dialog"
             >
-              <h3 className="font-bold text-lg capitalize">please login</h3>
+              <h3 className="font-bold text-lg capitalize">
+                Login Your Account
+              </h3>
 
               {/* email */}
               <div className="form-control">
