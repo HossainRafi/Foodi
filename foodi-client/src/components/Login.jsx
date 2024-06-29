@@ -79,6 +79,14 @@ export const Login = () => {
                   Signup
                 </Link>{" "}
               </p>
+
+              <button
+                htmlFor="my_modal_5"
+                onClick={() => document.getElementById("my_modal_5").close()}
+                className="btn btn-md btn-circle btn-ghost absolute right-3 top-3 font-bold text-xl"
+              >
+                ✕
+              </button>
             </form>
 
             <div className="text-center space-x-3 mb-5 flex items-center justify-center">
