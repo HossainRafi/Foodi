@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { Login } from "./Login";
 import logo from "/logo.png";
+import { AuthContext } from "../context/AuthProvider";
 
 export const Navbar = () => {
+const {user}=useContext(AuthContext)
+console.log(user)
+
+
   // scroll effect for navbar
   const [isSticky, setSticky] = useState(false);
   useEffect(() => {
