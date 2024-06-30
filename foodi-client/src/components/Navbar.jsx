@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { Login } from "./Login";
 import logo from "/logo.png";
-import { AuthContext } from "../context/AuthProvider";
+import { AuthContext } from "../contexts/AuthProvider";
 
 export const Navbar = () => {
 const {user}=useContext(AuthContext)
