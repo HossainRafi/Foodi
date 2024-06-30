@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
@@ -14,6 +14,10 @@ export const Login = () => {
   const { signupWithGmail, login } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
   // email password login
   const onSubmit = (data) => {
     const email = data.email;
@@ -23,6 +27,8 @@ export const Login = () => {
       .then((result) => {
         const user = result.user;
         alert("Login successfull");
+        document.getElementById("my_modal_5").close();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;
