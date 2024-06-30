@@ -4,6 +4,7 @@ import { FaRegUser } from "react-icons/fa";
 import { Login } from "./Login";
 import logo from "/logo.png";
 import { AuthContext } from "../contexts/AuthProvider";
+import { Profile } from "./Profile";
 
 export const Navbar = () => {
   const { user } = useContext(AuthContext);
@@ -167,9 +168,7 @@ export const Navbar = () => {
 
             {/* login btn */}
             {user ? (
-              <>
-                <p>Logout</p>
-              </>
+              <Profile user={user} />
             ) : (
               <button
                 onClick={() =>
@@ -177,7 +176,7 @@ export const Navbar = () => {
                 }
                 className="btn bg-green rounded-full px-4 text-white flex items-center gap-2 text-lg"
               >
-                <FaRegUser className="text-xl" /> Login
+                <FaRegUser /> Login
               </button>
             )}
 
