@@ -4,6 +4,7 @@ import "../App.css";
 import { Footer } from "../components/Footer";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 export const MainLayout = () => {
   const { loading } = useContext(AuthContext);
@@ -11,7 +12,7 @@ export const MainLayout = () => {
   return (
     <div className="bg-prigmayBG">
       {loading ? (
-        <p>loading...</p>
+        <LoadingSpinner />
       ) : (
         <div>
           <Navbar />
