@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 
 export const Login = () => {
@@ -11,15 +11,31 @@ export const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { signupWithGmail } = useContext(AuthContext);
-  const onSubmit = (data) => console.log(data);
+  const { signupWithGmail, login } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // email password login
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+    // console.log(email, password)
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
+        alert("Login successfull");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setErrorMessage("Provide a correct email and password!");
+      });
+  };
 
   // google login
   const handleLogin = () => {
     signupWithGmail()
       .then((result) => {
         const user = result.user;
-        console.log(user)
+        // console.log(user)
         alert("Login successfull!");
       })
       .catch((error) => console.log(error));
@@ -71,6 +87,11 @@ export const Login = () => {
               </div>
 
               {/* error text */}
+              {errorMessage ? (
+                <p className="text-red text-xs italic">{errorMessage}</p>
+              ) : (
+                ""
+              )}
 
               {/* login btn */}
               <div className="form-control mt-6">
