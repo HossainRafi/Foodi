@@ -13,10 +13,12 @@ export const UpdateProfile = () => {
     formState: { errors },
   } = useForm();
 
+  // redirecting to home page or specific page
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
 
+  // update profile name and image
   const onSubmit = (data) => {
     const name = data.name;
     const photoURL = data.photoURL;
