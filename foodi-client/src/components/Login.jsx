@@ -14,6 +14,7 @@ export const Login = () => {
   const { signupWithGmail, login } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
 
+  // redirecting to home page or specific page
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -43,6 +44,7 @@ export const Login = () => {
         const user = result.user;
         // console.log(user)
         alert("Login successfull!");
+        navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
   };

@@ -1,7 +1,7 @@
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Login } from "./Login";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 
@@ -14,6 +14,11 @@ export const Signup = () => {
 
   const { createUser, login } = useContext(AuthContext);
 
+  // redirecting to home page or specific page
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
   // create user function
   const onSubmit = (data) => {
     const email = data.email;
@@ -23,12 +28,12 @@ export const Signup = () => {
         // Signed up
         const user = result.user;
         alert("Account creation successfully done!");
-        // ...
+        document.getElementById("my_modal_5").close();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
       });
   };
 
@@ -73,8 +78,6 @@ export const Signup = () => {
               </a>
             </label>
           </div>
-
-          {/* error text */}
 
           {/* login btn */}
           <div className="form-control mt-6">
