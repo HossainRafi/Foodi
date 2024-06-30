@@ -2,6 +2,8 @@ import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Login } from "./Login";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthProvider";
 
 export const Signup = () => {
   const {
@@ -10,7 +12,25 @@ export const Signup = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const { createUser, login } = useContext(AuthContext);
+
+  // create user function
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+    createUser(email, password)
+      .then((result) => {
+        // Signed up
+        const user = result.user;
+        alert("Account creation successfully done!");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  };
 
   return (
     <div className="max-w-md bg-white shadow w-full mx-auto flex items-center justify-center my-20 rounded-xl border-2">
