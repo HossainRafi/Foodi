@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Login } from "./Login";
