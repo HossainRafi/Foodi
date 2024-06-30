@@ -45,6 +45,7 @@ export const Login = () => {
         const user = result.user;
         // console.log(user)
         alert("Login successfull!");
+        document.getElementById("my_modal_5").close();
         navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
