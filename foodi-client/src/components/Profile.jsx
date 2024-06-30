@@ -4,17 +4,15 @@ import { AuthContext } from "../contexts/AuthProvider";
 
 export const Profile = (user) => {
   const { logOut } = useContext(AuthContext);
-
   const handleLogout = () => {
     logOut()
       .then(() => {
-        alert("Logout Successfull");
+        alert("logout successfull!!");
       })
       .catch((error) => {
-        // An error happened
+        // An error happened.
       });
   };
-
   return (
     <div>
       <div className="drawer drawer-end z-50">
@@ -29,7 +27,7 @@ export const Profile = (user) => {
               {user?.user?.photoURL ? (
                 <img src={user?.user?.photoURL} />
               ) : (
-                <img src="../../public/images/home/default.jpg" />
+                <img src="/images/home/default.jpg" />
               )}
             </div>
           </label>
