@@ -1,4 +1,5 @@
 export const Profile = (user) => {
+  // console.log(user.user.photoURL);
   return (
     <div>
       <div className="drawer drawer-end z-50">
@@ -7,9 +8,11 @@ export const Profile = (user) => {
           {/* Page content here */}
           <label
             htmlFor="my-drawer-4"
-            className="drawer-button btn btn-primary"
+            className="drawer-button btn btn-ghost btn-circle avatar"
           >
-            Open drawer
+            <div className="w-10 rounded-full">
+              <img src={user?.user?.photoURL} />
+            </div>
           </label>
         </div>
         <div className="drawer-side">
