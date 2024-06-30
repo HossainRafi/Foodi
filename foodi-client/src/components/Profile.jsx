@@ -11,7 +11,11 @@ export const Profile = (user) => {
             className="drawer-button btn btn-ghost btn-circle avatar"
           >
             <div className="w-10 rounded-full">
-              <img src={user?.user?.photoURL} />
+              {user?.user?.photoURL ? (
+                <img src={user?.user?.photoURL} />
+              ) : (
+                <img src="../../public/images/home/default.jpg" />
+              )}
             </div>
           </label>
         </div>
