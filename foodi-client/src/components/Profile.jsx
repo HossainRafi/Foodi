@@ -1,5 +1,20 @@
+/* eslint-disable no-unused-vars */
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthProvider";
+
 export const Profile = (user) => {
-  // console.log(user.user.photoURL);
+  const { logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        alert("Logout Successfull");
+      })
+      .catch((error) => {
+        // An error happened
+      });
+  };
+
   return (
     <div>
       <div className="drawer drawer-end z-50">
@@ -37,7 +52,7 @@ export const Profile = (user) => {
               <a>Setting</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a onClick={handleLogout}>Logout</a>
             </li>
           </ul>
         </div>
