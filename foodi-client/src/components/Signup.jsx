@@ -13,6 +13,7 @@ export const Signup = () => {
     formState: { errors },
   } = useForm();
 
+  const { signupWithGmail, googleLogin } = useContext(AuthContext);
   const { createUser, login } = useContext(AuthContext);
 
   // redirecting to home page or specific page
@@ -36,6 +37,19 @@ export const Signup = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
       });
+  };
+
+  // google login
+  const handleLogin = () => {
+    signupWithGmail()
+      .then((result) => {
+        const user = result.user;
+        // console.log(user)
+        alert("Login successfull!");
+        document.getElementById("my_modal_5").close();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -108,7 +122,10 @@ export const Signup = () => {
 
         <div className="text-center space-x-3 mb-5 flex items-center justify-center">
           <p className="text-lg font-medium">Login with Google</p>
-          <button className="btn btn-circle hover:bg-green hover:text-white">
+          <button
+            className="btn btn-circle hover:bg-green hover:text-white"
+            onClick={handleLogin}
+          >
             <FaGoogle />
           </button>
         </div>
