@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthProvider";
 
 export const Login = () => {
   const {
@@ -9,8 +11,19 @@ export const Login = () => {
     formState: { errors },
   } = useForm();
 
+  const { signupWithGmail } = useContext(AuthContext);
   const onSubmit = (data) => console.log(data);
 
+  // google login
+  const handleLogin = () => {
+    signupWithGmail()
+      .then((result) => {
+        const user = result.user;
+        console.log(user)
+        alert("Login successfull!");
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <dialog id="my_modal_5" className="modal modal-middle sm:modal-middle">
@@ -89,7 +102,10 @@ export const Login = () => {
 
             <div className="text-center space-x-3 mb-5 flex items-center justify-center">
               <p className="text-lg font-medium">Login with Google</p>
-              <button className="btn btn-circle hover:bg-green hover:text-white">
+              <button
+                className="btn btn-circle hover:bg-green hover:text-white"
+                onClick={handleLogin}
+              >
                 <FaGoogle />
               </button>
             </div>
