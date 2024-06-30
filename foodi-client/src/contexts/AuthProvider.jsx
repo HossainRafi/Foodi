@@ -69,6 +69,7 @@ export const AuthProvider = ({ children }) => {
     user,
     login,
     logOut,
+    loading,
     createUser,
     signupWithGmail,
     updateUserProfile,
