@@ -52,12 +52,12 @@ export const AuthProvider = ({ children }) => {
   // check signed-in user
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      // console.log(currentUser);
+      setUser(currentUser);
       if (currentUser) {
-        setUser(currentUser);
-        setLoading(false);
-      } else {
-        // user is signed out
+        const userInfo = { email: currentUser.email };
       }
+      setLoading(false);
     });
 
     return () => {
