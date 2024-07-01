@@ -14,7 +14,7 @@ export const Menu = () => {
     // Fetch data from the backend
     const fetchData = async () => {
       try {
-        const response = await fetch("/menu.json");
+        const response = await fetch("http://localhost:5000/menu");
         const data = await response.json();
         setMenu(data);
         setFilteredItems(data); // Initially, display all items
@@ -165,7 +165,7 @@ export const Menu = () => {
         </div>
 
         {/* product card */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4 md:gap-14">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4 md:gap-6">
           {currentItems.map((item) => (
             <Cards key={item._id} item={item} />
           ))}
