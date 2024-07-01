@@ -34,9 +34,7 @@ export const CartPage = () => {
                   <div className="flex items-center gap-3">
                     <div className="avatar">
                       <div className="mask mask-circle h-12 w-12">
-                        <img
-                          src="#"
-                        />
+                        <img src="#" />
                       </div>
                     </div>
                     <div>
