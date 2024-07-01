@@ -28,20 +28,20 @@ async function run() {
     const menuCollections = client.db("foodi").collection("menus");
     const cartCollections = client.db("foodi").collection("cartItems");
 
-    // all menu items operations
+    // get all menu items
     app.get("/menu", async (req, res) => {
       const result = await menuCollections.find().toArray();
       res.send(result);
     });
 
-    // post cart to database
+    // post cart items to database
     app.post("/carts", async (req, res) => {
       const cartItem = req.body;
       const result = await cartCollections.insertOne(cartItem);
       res.send(result);
     });
 
-    // get carts using email
+    // get addToCarts data using email
     app.get("/carts", async (req, res) => {
       const email = req.query.email;
       const filter = { email: email };

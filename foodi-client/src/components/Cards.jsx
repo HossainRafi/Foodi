@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import Swal from "sweetalert2";
