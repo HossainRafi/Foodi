@@ -10,7 +10,7 @@ export const Cards = ({ item }) => {
   };
 
   return (
-    <div className="card bg-base-100 w-96 shadow-xl relative border">
+    <div className="card bg-base-100 shadow-xl relative border">
       <div
         className={`rating gap-1 absolute right-0 top-0 p-4 heartStar bg-green ${
           isHeartFillted ? "text-rose-500" : "text-white"
