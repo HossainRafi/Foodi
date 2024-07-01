@@ -165,7 +165,7 @@ export const Menu = () => {
         </div>
 
         {/* product card */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4 md:gap-14">
           {currentItems.map((item) => (
             <Cards key={item._id} item={item} />
           ))}

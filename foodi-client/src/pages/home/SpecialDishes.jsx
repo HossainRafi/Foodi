@@ -115,7 +115,7 @@ export const SpecialDishes = () => {
       <Slider
         ref={slider}
         {...settings}
-        className="overflow-hidden mt-10 space-x-5"
+        className="overflow-hidden mt-10 space-x-5 gap-10"
       >
         {recipes.map((item, i) => (
           <Cards item={item} key={i} />
