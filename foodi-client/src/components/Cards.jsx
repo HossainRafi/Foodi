@@ -20,7 +20,17 @@ export const Cards = ({ item }) => {
         price,
         email: user?.email,
       };
-      // console.log(cartItem)
+      fetch("http://localhost:5000/carts", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(cartItem),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
     }
   };
 
