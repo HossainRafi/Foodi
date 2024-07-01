@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./../contexts/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Cards = ({ item }) => {
   const [isHeartFillted, setIsHeartFillted] = useState(false);
@@ -29,7 +30,9 @@ export const Cards = ({ item }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          if (data.insertedId) {
+            toast.success("Added Successfully !");
+          }
         });
     }
   };
@@ -75,6 +78,15 @@ export const Cards = ({ item }) => {
           </button>
         </div>
       </div>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          style: {
+            padding: "15px",
+            margin: "75px",
+          },
+        }}
+      />
     </div>
   );
 };
