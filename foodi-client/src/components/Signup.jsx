@@ -13,7 +13,7 @@ export const Signup = () => {
     formState: { errors },
   } = useForm();
 
-  const { signupWithGmail, googleLogin } = useContext(AuthContext);
+  const { signUpWithGmail, googleLogin } = useContext(AuthContext);
   const { createUser, login } = useContext(AuthContext);
 
   // redirecting to home page or specific page
@@ -41,7 +41,7 @@ export const Signup = () => {
 
   // google login
   const handleLogin = () => {
-    signupWithGmail()
+    signUpWithGmail()
       .then((result) => {
         const user = result.user;
         // console.log(user)

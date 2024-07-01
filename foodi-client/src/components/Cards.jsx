@@ -6,7 +6,7 @@ import { AuthContext } from "./../contexts/AuthProvider";
 export const Cards = ({ item }) => {
   const [isHeartFillted, setIsHeartFillted] = useState(false);
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
 
   const handleAddCart = (item) => {
     const { _id, name, image, price, recipe } = item;

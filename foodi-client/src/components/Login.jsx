@@ -12,7 +12,7 @@ export const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { signupWithGmail, login } = useContext(AuthContext);
+  const { signUpWithGmail, login } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
 
   // redirecting to home page or specific page
@@ -40,7 +40,7 @@ export const Login = () => {
 
   // google login
   const handleLogin = () => {
-    signupWithGmail()
+    signUpWithGmail()
       .then((result) => {
         const user = result.user;
         // console.log(user)
