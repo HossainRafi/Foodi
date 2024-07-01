@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 export const Cards = ({ item }) => {
   const [isHeartFillted, setIsHeartFillted] = useState(false);
 
+  const handleAddCart = (item) => {
+    console.log("btn clicked", item);
+  };
+
+  // favourite item
   const handleHeartClick = () => {
     setIsHeartFillted(!isHeartFillted);
   };
@@ -37,7 +42,12 @@ export const Cards = ({ item }) => {
             <span className="text-md text-red">$ </span>
             {item.price}
           </h5>
-          <button className="btn bg-green text-white">Buy Now</button>
+          <button
+            onClick={() => handleAddCart(item)}
+            className="btn bg-green text-white"
+          >
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>

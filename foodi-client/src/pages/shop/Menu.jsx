@@ -83,7 +83,7 @@ export const Menu = () => {
     <div>
       {/* menu banner */}
       <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 bg-gradient-to-r from-0% from-[#FAFAFA] to-[#FCFCFC] to-100%">
-        <div className="py-48 flex flex-col items-center justify-center">
+        <div className="pt-40 pb-24 flex flex-col items-center justify-center">
           {/* content */}
           <div className=" text-center px-4 space-y-7">
             <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug">
@@ -105,7 +105,7 @@ export const Menu = () => {
       <div className="section-container">
         <div className="flex flex-col md:flex-row flex-wrap md:justify-between items-center space-y-3 mb-8">
           {/* all category buttons */}
-          <div className="flex flex-row justify-start md:items-center md:gap-8 gap-4  flex-wrap">
+          <div className="flex flex-row justify-start md:items-center md:gap-8 gap-4 flex-wrap">
             <button
               onClick={showAll}
               className={selectedCategory === "all" ? "active" : ""}
@@ -146,16 +146,19 @@ export const Menu = () => {
 
           {/* filter options */}
           <div className="flex justify-end mb-4 rounded-sm">
-            <div className="bg-black p-2 ">
+            <div className="bg-green p-2 ">
               <FaFilter className="text-white h-4 w-4" />
             </div>
             <select
               id="sort"
               onChange={(e) => handleSortChange(e.target.value)}
               value={sortOption}
-              className="bg-black text-white px-2 py-1 rounded-sm outline-none cursor-pointer"
+              className="bg-green text-white px-2 py-1 rounded-sm outline-none cursor-pointer"
             >
-              <option value="default"> Default</option>
+              <option className="cursor-pointer" value="default">
+                {" "}
+                Default
+              </option>
               <option value="A-Z">A-Z</option>
               <option value="Z-A">Z-A</option>
               <option value="low-to-high">Low to High</option>
