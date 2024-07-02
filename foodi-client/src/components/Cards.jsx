@@ -34,7 +34,7 @@ export const Cards = ({ item }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            toast.success("Food Added Successfully !");
+            toast.success("Added Successfully !");
           }
         });
     } else {
