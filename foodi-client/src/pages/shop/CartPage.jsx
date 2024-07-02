@@ -2,9 +2,12 @@ import toast, { Toaster } from "react-hot-toast";
 import { useCart } from "../../hooks/useCart";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 export const CartPage = () => {
   const [cart, refetch] = useCart();
+  const {user}=useContext(AuthContext)
 
   // delete button
   const handleDelete = (item) => {
@@ -21,7 +24,7 @@ export const CartPage = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              refetch()
+              refetch();
               toast.success("Remove Successfully !");
             }
           });
@@ -44,7 +47,7 @@ export const CartPage = () => {
       {/* table */}
       <div>
         <div className="overflow-x-auto">
-          <table className="table border mb-20">
+          <table className="table border">
             {/* head */}
             <thead className="bg-green text-white">
               <tr className="text-sm">
@@ -87,6 +90,20 @@ export const CartPage = () => {
           </table>
         </div>
       </div>
+
+      {/* customer details */}
+      <div className="my-14">
+        {/* details left */}
+        <div className="md:w-1/2 space-y-3">
+          <h3 className="font-semibold text-xl">Customer Details</h3>
+          <p>Name: {user.displayName}</p>
+          <p>E-mail: {user.email}</p>
+          {/* <p>User_id: {user.uid}</p> */}
+        </div>
+        <div className="md:w-1/2 space-y-3"></div>
+      </div>
+
+      {/* toaster */}
       <Toaster
         position="top-center"
         toastOptions={{
