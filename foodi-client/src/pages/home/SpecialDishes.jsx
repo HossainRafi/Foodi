@@ -88,7 +88,7 @@ export const SpecialDishes = () => {
   };
 
   return (
-    <div className="section-container my-20 relative">
+    <div className="section-container mt-20 mb-16 relative">
       {/* heading section */}
       <div className="text-left ">
         <p className="subtitle">special dishes</p>
