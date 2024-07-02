@@ -1,4 +1,8 @@
+import { useCart } from "../../hooks/useCart";
+
 export const CartPage = () => {
+const [cart, refetch]=useCart()
+
   return (
     <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
       {/* banner */}
