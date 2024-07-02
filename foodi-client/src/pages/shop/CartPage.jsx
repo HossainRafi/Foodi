@@ -100,7 +100,12 @@ export const CartPage = () => {
           <p>E-mail: {user.email}</p>
           {/* <p>User_id: {user.uid}</p> */}
         </div>
-        <div className="md:w-1/2 space-y-3"></div>
+        <div className="md:w-1/2 space-y-3">
+          <h3 className="font-semibold text-xl">Shooping Details</h3>
+          <p>Total Items: {cart.length}</p>
+          <p>Total Price: $ 0.00</p>
+          <button className="btn bg-green text-white text-lg">Checkout</button>
+        </div>
       </div>
 
       {/* toaster */}
