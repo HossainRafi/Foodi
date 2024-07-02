@@ -118,7 +118,7 @@ export const SpecialDishes = () => {
         className="overflow-hidden mt-10 space-x-5 gap-10"
       >
         {recipes.map((item, i) => (
-          <div key={i} className="px-4">
+          <div key={i} className="md:px-4 py-4 md:py-8">
             <Cards item={item} />
           </div>
         ))}
