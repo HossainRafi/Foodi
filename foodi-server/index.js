@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // mongodb configuration using mongoose
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@foodi.q8mmsmf.mongodb.net/?appName=Foodi`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -49,12 +49,20 @@ async function run() {
       res.send(result);
     });
 
+    // get specific cart item
+    app.get("/carts/:id", async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const result = await cartCollections.findOne(filter)
+      res.send(result)
+    });
+
     // delete items from the cart
     app.delete("/carts/:id", async (req, res) => {
       const id = req.params.id;
-      const filter = { _id: new Object(id) };
+      const filter = { _id: new ObjectId(id) };
       const result = await cartCollections.deleteOne(filter);
-      res.send(result)
+      res.send(result);
     });
 
     // database running or not
