@@ -102,7 +102,6 @@ export const Cards = ({ item }) => {
         position="top-center"
         toastOptions={{
           style: {
-            padding: "10px",
             margin: "70px",
           },
         }}

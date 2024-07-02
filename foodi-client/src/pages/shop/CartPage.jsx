@@ -123,7 +123,6 @@ export const CartPage = () => {
         position="top-center"
         toastOptions={{
           style: {
-            padding: "15px",
             margin: "70px",
           },
         }}
