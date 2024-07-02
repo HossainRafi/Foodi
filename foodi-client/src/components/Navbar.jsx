@@ -6,10 +6,13 @@ import logo from "/logo.png";
 import { AuthContext } from "../contexts/AuthProvider";
 import { Profile } from "./Profile";
 import { Link } from "react-router-dom";
+import { useCart } from "../hooks/useCart";
 
 export const Navbar = () => {
   const { user } = useContext(AuthContext);
   // console.log(user)
+  const [cart, refetch] = useCart()
+  console.log(cart)
 
   // scroll effect for navbar
   const [isSticky, setSticky] = useState(false);
