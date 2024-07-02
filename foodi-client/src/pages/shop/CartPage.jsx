@@ -1,4 +1,5 @@
 import { useCart } from "../../hooks/useCart";
+import { FaTrash } from "react-icons/fa"
 
 export const CartPage = () => {
   const [cart, refetch] = useCart();
@@ -21,13 +22,13 @@ export const CartPage = () => {
           <table className="table border mb-20">
             {/* head */}
             <thead className="bg-green text-white">
-              <tr className="text-xl">
+              <tr className="text-sm">
                 {/* <th className="text-center">#</th> */}
                 <th className="text-center">Image</th>
                 <th className="text-center">Name</th>
                 <th className="text-center">Quantity</th>
                 <th className="text-center">Price</th>
-                <th className="text-center">Action</th>
+                <th className="text-center">Remove</th>
               </tr>
             </thead>
             <tbody>
@@ -44,11 +45,11 @@ export const CartPage = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="font-semibold text-center">{item.name}</td>
-                  <td className="font-semibold text-center">{item.quantity}</td>
-                  <td className="font-semibold text-center">{item.price}</td>
+                  <td className="text-center">{item.name}</td>
+                  <td className="text-center">{item.quantity}</td>
+                  <td className="text-center">{item.price}</td>
                   <th className="text-center">
-                    <button className="btn btn-ghost btn-xs">details</button>
+                    <button className="btn-sm"><FaTrash className="text-red text-lg"/></button>
                   </th>
                 </tr>
               ))}
