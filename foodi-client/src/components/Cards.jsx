@@ -9,7 +9,7 @@ import { useCart } from "../hooks/useCart";
 export const Cards = ({ item }) => {
   const [isHeartFillted, setIsHeartFillted] = useState(false);
   const { user } = useContext(AuthContext);
-  const [refetch] = useCart();
+  const [cart, refetch] = useCart();
   // console.log(user);
 
   const navigate = useNavigate();
@@ -102,9 +102,8 @@ export const Cards = ({ item }) => {
         position="top-center"
         toastOptions={{
           style: {
-            // padding: "10px",
-            // margin: "70px",
-            
+            padding: "10px",
+            margin: "70px",
           },
         }}
       />
