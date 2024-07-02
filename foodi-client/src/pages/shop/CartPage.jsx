@@ -74,7 +74,16 @@ export const CartPage = () => {
                     </div>
                   </td>
                   <td className="text-center">{item.name}</td>
-                  <td className="text-center">{item.quantity}</td>
+                  {/* quantity increase or decrease */}
+                  <td className="text-center">
+                    <button className="btn btn-sm"> - </button>
+                    <input
+                      type="number"
+                      value={item.quantity}
+                      className="w-10 mx-2 text-center overflow-hidden appearance-none"
+                    />
+                    <button className="btn btn-sm"> + </button>
+                  </td>
                   <td className="text-center">$ {item.price}</td>
                   <th className="text-center">
                     <button
