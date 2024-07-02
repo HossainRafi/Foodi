@@ -6,7 +6,7 @@ export const CartPage = () => {
   return (
     <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
       {/* banner */}
-      <div className="pt-32 pb-16 flex flex-col justify-center items-center gap-8">
+      <div className="pt-32 pb-12 flex flex-col justify-center items-center gap-8">
         <div className="space-y-7 px-4">
           <h2 className="text-4xl md:text-5xl font-bold md:leading-snug leading-snug capitalize">
             items added to the{" "}
@@ -18,7 +18,7 @@ export const CartPage = () => {
       {/* table */}
       <div>
         <div className="overflow-x-auto">
-          <table className="table">
+          <table className="table border mb-20">
             {/* head */}
             <thead className="bg-green text-white">
               <tr className="text-xl">
@@ -35,7 +35,7 @@ export const CartPage = () => {
               {cart.map((item, index) => (
                 <tr key={index}>
                   {/* <td className="font-semibold text-center">{index + 1}</td> */}
-                  <td>
+                  <td className="flex justify-center items-center">
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask mask-circle h-12 w-12 md:h-20 md:w-20">
