@@ -7,7 +7,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 export const CartPage = () => {
   const [cart, refetch] = useCart();
-  const {user}=useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   // delete button
   const handleDelete = (item) => {
@@ -92,18 +92,28 @@ export const CartPage = () => {
       </div>
 
       {/* customer details */}
-      <div className="my-14">
+      <div className="my-14 flex flex-col md:flex-row justify-between items-start">
         {/* details left */}
         <div className="md:w-1/2 space-y-3">
           <h3 className="font-semibold text-xl">Customer Details</h3>
-          <p>Name: {user.displayName}</p>
-          <p>E-mail: {user.email}</p>
-          {/* <p>User_id: {user.uid}</p> */}
+          <p>
+            <span className="font-semibold">Name:</span> {user.displayName}
+          </p>
+          <p>
+            <span className="font-semibold">E-mail:</span> {user.email}
+          </p>
+          <p>
+            <span className="font-semibold">User ID:</span> {user.uid}
+          </p>
         </div>
         <div className="md:w-1/2 space-y-3">
           <h3 className="font-semibold text-xl">Shooping Details</h3>
-          <p>Total Items: {cart.length}</p>
-          <p>Total Price: $ 0.00</p>
+          <p>
+            <span className="font-semibold">Total Items:</span> {cart.length}
+          </p>
+          <p>
+            <span className="font-semibold">Total Price:</span> $ 0.00
+          </p>
           <button className="btn bg-green text-white text-lg">Checkout</button>
         </div>
       </div>
