@@ -4,10 +4,12 @@ import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../contexts/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { useCart } from "../hooks/useCart";
 
 export const Cards = ({ item }) => {
   const [isHeartFillted, setIsHeartFillted] = useState(false);
   const { user } = useContext(AuthContext);
+  const [refetch] = useCart();
   // console.log(user);
 
   const navigate = useNavigate();
@@ -34,6 +36,7 @@ export const Cards = ({ item }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
+            refetch();
             toast.success("Added Successfully !");
           }
         });
@@ -99,8 +102,9 @@ export const Cards = ({ item }) => {
         position="top-center"
         toastOptions={{
           style: {
-            padding: "15px",
-            margin: "70px",
+            // padding: "10px",
+            // margin: "70px",
+            
           },
         }}
       />
