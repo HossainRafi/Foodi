@@ -1,8 +1,30 @@
 import { useCart } from "../../hooks/useCart";
-import { FaTrash } from "react-icons/fa"
+import { FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 export const CartPage = () => {
   const [cart, refetch] = useCart();
+
+  // delete button
+  const handleDelete=(item)=>{
+Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!",
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success",
+    });
+  }
+});
+  }
 
   return (
     <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
@@ -39,7 +61,7 @@ export const CartPage = () => {
                   <td className="flex justify-center items-center">
                     <div className="flex items-center gap-3">
                       <div className="avatar">
-                        <div className="mask mask-circle h-12 w-12 md:h-20 md:w-20">
+                        <div className="mask mask-circle h-12 w-12 md:h-16 md:w-16">
                           <img src={item.image} />
                         </div>
                       </div>
@@ -47,9 +69,14 @@ export const CartPage = () => {
                   </td>
                   <td className="text-center">{item.name}</td>
                   <td className="text-center">{item.quantity}</td>
-                  <td className="text-center">{item.price}</td>
+                  <td className="text-center">$ {item.price}</td>
                   <th className="text-center">
-                    <button className="btn-sm"><FaTrash className="text-red text-lg"/></button>
+                    <button
+                      onClick={() => handleDelete(item)}
+                      className="btn-sm"
+                    >
+                      <FaTrash className="text-red text-lg" />
+                    </button>
                   </th>
                 </tr>
               ))}
