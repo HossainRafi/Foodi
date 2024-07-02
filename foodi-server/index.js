@@ -49,6 +49,15 @@ async function run() {
       res.send(result);
     });
 
+    // delete items from the cart
+    app.delete("/carts/:id", async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new Object(id) };
+      const result = await cartCollections.deleteOne(filter);
+      res.send(result)
+    });
+
+    // database running or not
     await client.db("admin").command({ ping: 1 });
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
@@ -59,7 +68,7 @@ async function run() {
 }
 run().catch(console.dir);
 
-// testing server is running or not
+// server running or not
 app.get("/", (req, res) => {
   res.send("Server is running.............!");
 });
