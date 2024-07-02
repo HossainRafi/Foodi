@@ -22,19 +22,19 @@ export const CartPage = () => {
             {/* head */}
             <thead className="bg-green text-white">
               <tr className="text-xl">
-                <th>#</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Action</th>
+                {/* <th className="text-center">#</th> */}
+                <th className="text-center">Image</th>
+                <th className="text-center">Name</th>
+                <th className="text-center">Quantity</th>
+                <th className="text-center">Price</th>
+                <th className="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
               {/* cart row */}
               {cart.map((item, index) => (
                 <tr key={index}>
-                  <td>{index + 1}</td>
+                  {/* <td className="font-semibold text-center">{index + 1}</td> */}
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
@@ -44,10 +44,10 @@ export const CartPage = () => {
                       </div>
                     </div>
                   </td>
-                  <td>{item.name}</td>
-                  <td>{item.quantity}</td>
-                  <td>{item.price}</td>
-                  <th>
+                  <td className="font-semibold text-center">{item.name}</td>
+                  <td className="font-semibold text-center">{item.quantity}</td>
+                  <td className="font-semibold text-center">{item.price}</td>
+                  <th className="text-center">
                     <button className="btn btn-ghost btn-xs">details</button>
                   </th>
                 </tr>
