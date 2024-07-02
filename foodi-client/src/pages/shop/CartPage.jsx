@@ -1,3 +1,4 @@
+import toast, { Toaster } from "react-hot-toast";
 import { useCart } from "../../hooks/useCart";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -6,25 +7,27 @@ export const CartPage = () => {
   const [cart, refetch] = useCart();
 
   // delete button
-  const handleDelete=(item)=>{
-Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!",
-}).then((result) => {
-  if (result.isConfirmed) {
+  const handleDelete = (item) => {
     Swal.fire({
-      title: "Deleted!",
-      text: "Your file has been deleted.",
-      icon: "success",
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/carts/${item._id}`, { method: "DELETE" })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              toast.success("Food Added Successfully !");
+            }
+          });
+      }
     });
-  }
-});
-  }
+  };
 
   return (
     <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
@@ -84,6 +87,15 @@ Swal.fire({
           </table>
         </div>
       </div>
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            padding: "15px",
+            margin: "70px",
+          },
+        }}
+      />
     </div>
   );
 };

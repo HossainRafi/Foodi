@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -17,7 +15,6 @@ export const Cards = ({ item }) => {
 
   const handleAddCart = (item) => {
     const { _id, name, image, price, recipe } = item;
-    // console.log("btn clicked", item);
     if (user && user?.email) {
       const cartItem = {
         menuItemId: _id,
