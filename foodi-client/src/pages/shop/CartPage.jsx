@@ -14,7 +14,7 @@ export const CartPage = () => {
 
   // calculate price
   const calculatePrice = (item) => {
-    return item.price * item.quantity;
+    return item?.price * item?.quantity;
   };
 
   // item increase button
@@ -25,13 +25,13 @@ export const CartPage = () => {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
-      body: JSON.stringify({ quantity: item.quantity + 1 }),
+      body: JSON.stringify({ quantity: item?.quantity + 1 }),
     })
       .then((res) => res.json())
       .then((data) => {
         const updatedCart = cartItems.map((cartItem) => {
           if (cartItem.id === item.id) {
-            return { ...cartItem, quantity: cartItem.quantity + 1 };
+            return { ...cartItem, quantity: cartItem?.quantity + 1 };
           }
           return cartItem;
         });
@@ -44,7 +44,7 @@ export const CartPage = () => {
   // item decrease button
   const handleDecrease = (item) => {
     // console.log(item._id);
-    if (item.quantity > 1) {
+    if (item?.quantity > 1) {
       fetch(`http://localhost:5000/carts/${item._id}`, {
         method: "PUT",
         headers: {
@@ -55,8 +55,8 @@ export const CartPage = () => {
         .then((res) => res.json())
         .then((data) => {
           const updatedCart = cartItems.map((cartItem) => {
-            if (cartItem.id === item.id) {
-              return { ...cartItem, quantity: cartItem.quantity - 1 };
+            if (cartItem?.id === item?.id) {
+              return { ...cartItem, quantity: cartItem?.quantity - 1 };
             }
             return cartItem;
           });
@@ -85,8 +85,8 @@ export const CartPage = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Delete",
     }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${item._id}`, { method: "DELETE" })
+      if (result?.isConfirmed) {
+        fetch(`http://localhost:5000/carts/${item?._id}`, { method: "DELETE" })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -134,12 +134,12 @@ export const CartPage = () => {
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask mask-circle h-12 w-12 md:h-16 md:w-16">
-                          <img src={item.image} />
+                          <img src={item?.image} />
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td className="text-center">{item.name}</td>
+                  <td className="text-center">{item?.name}</td>
                   {/* quantity increase or decrease */}
                   <td className="text-center">
                     <button
@@ -150,8 +150,8 @@ export const CartPage = () => {
                     </button>
                     <input
                       type="number"
-                      value={item.quantity}
-                      onChange={() => console.log(item.quantity)}
+                      value={item?.quantity}
+                      onChange={() => console.log(item?.quantity)}
                       className="w-10 mx-2 text-center overflow-hidden appearance-none"
                     />
                     <button
@@ -185,19 +185,19 @@ export const CartPage = () => {
         <div className="md:w-1/2 space-y-5">
           <h3 className="font-bold text-2xl">Customer Details</h3>
           <p className="text-xl">
-            <span className="font-medium">Name:</span> {user.displayName}
+            <span className="font-medium">Name:</span> {user?.displayName}
           </p>
           <p className="text-xl">
-            <span className="font-medium">E-mail:</span> {user.email}
+            <span className="font-medium">E-mail:</span> {user?.email}
           </p>
           <p className="text-xl">
-            <span className="font-medium">User ID:</span> {user.uid}
+            <span className="font-medium">User ID:</span> {user?.uid}
           </p>
         </div>
         <div className="md:w-1/2 space-y-5">
           <h3 className="font-bold text-2xl">Shooping Details</h3>
           <p className="text-xl">
-            <span className="font-medium">Total Items:</span> {cart.length}
+            <span className="font-medium">Total Items:</span> {cart?.length}
           </p>
           <p className="text-xl">
             <span className="font-medium">Total Price:</span> ${" "}
