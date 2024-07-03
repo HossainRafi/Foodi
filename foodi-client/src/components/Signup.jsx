@@ -5,6 +5,7 @@ import { Login } from "./Login";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
+import { Toaster, toast } from 'react-hot-toast';
 
 export const Signup = () => {
   const {
@@ -29,7 +30,7 @@ export const Signup = () => {
       .then((result) => {
         // Signed up
         const user = result.user;
-        alert("Account creation successfully done!");
+        toast.success("Account Creation Successful !");
         document.getElementById("my_modal_5").close();
         navigate(from, { replace: true });
       })
@@ -45,7 +46,7 @@ export const Signup = () => {
       .then((result) => {
         const user = result.user;
         // console.log(user)
-        alert("Login successfull!");
+        toast.success("Login Successful !");
         document.getElementById("my_modal_5").close();
         navigate(from, { replace: true });
       })
@@ -131,6 +132,14 @@ export const Signup = () => {
         </div>
         <Login />
       </div>
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            margin: "70px",
+          },
+        }}
+      />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
+import { Toaster, toast } from 'react-hot-toast';
 
 export const Login = () => {
   const {
@@ -28,7 +29,7 @@ export const Login = () => {
     login(email, password)
       .then((result) => {
         const user = result.user;
-        alert("Login successfull");
+        toast.success("Login Successful !");
         document.getElementById("my_modal_5").close();
         navigate(from, { replace: true });
       })
@@ -44,7 +45,7 @@ export const Login = () => {
       .then((result) => {
         const user = result.user;
         // console.log(user)
-        alert("Login successfull!");
+        toast.success("Login Successful !");
         document.getElementById("my_modal_5").close();
         navigate(from, { replace: true });
       })
@@ -143,6 +144,14 @@ export const Login = () => {
           </div>
         </div>
       </dialog>
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            margin: "70px",
+          },
+        }}
+      />
     </div>
   );
 };

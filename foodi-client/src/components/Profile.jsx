@@ -1,13 +1,14 @@
 /* eslint-disable no-unused-vars */
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
+import { Toaster, toast } from 'react-hot-toast';
 
 export const Profile = (user) => {
   const { logOut } = useContext(AuthContext);
   const handleLogout = () => {
     logOut()
       .then(() => {
-        alert("logout successfull!!");
+        toast.success("Logout Successfull !");
       })
       .catch((error) => {
         // An error happened.
@@ -55,6 +56,14 @@ export const Profile = (user) => {
           </ul>
         </div>
       </div>
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            margin: "70px",
+          },
+        }}
+      />
     </div>
   );
 };
