@@ -41,7 +41,26 @@ export const CartPage = () => {
 
   // item decrease btn
   const handleDecrease = (item) => {
-    console.log(item._id);
+    // console.log(item._id);
+    fetch(`http://localhost:5000/carts/${item._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({ quantity: item.quantity + 1 }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const updatedCart = cartItems.map((cartItem) => {
+          if (cartItem.id === item.id) {
+            return { ...cartItem, quantity: cartItem.quantity - 1 };
+          }
+          return cartItem;
+        });
+        refetch();
+        setCartItems(updatedCart);
+      });
+    refetch();
   };
 
   // delete button
