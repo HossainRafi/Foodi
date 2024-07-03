@@ -10,6 +10,11 @@ export const CartPage = () => {
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
 
+  // calculate price
+  const calculatePrice = (item) => {
+    return item.price * item.quantity;
+  };
+
   // item increase btn
   const handleIncrease = (item) => {
     // console.log(item._id);
@@ -31,6 +36,7 @@ export const CartPage = () => {
         refetch();
         setCartItems(updatedCart);
       });
+    refetch();
   };
 
   // item decrease btn
@@ -126,7 +132,9 @@ export const CartPage = () => {
                       +{" "}
                     </button>
                   </td>
-                  <td className="text-center">$ {item.price}</td>
+                  <td className="text-center">
+                    $ {calculatePrice(item).toFixed(2)}
+                  </td>
                   <th className="text-center">
                     <button
                       onClick={() => handleDelete(item)}
