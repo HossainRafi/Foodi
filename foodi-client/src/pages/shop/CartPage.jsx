@@ -180,29 +180,30 @@ export const CartPage = () => {
       </div>
 
       {/* customer details */}
-      <div className="my-14 flex flex-col md:flex-row justify-between items-start">
+      <div className="mt-14 pb-24 flex flex-col md:flex-row justify-between items-start">
         {/* details left */}
-        <div className="md:w-1/2 space-y-3">
-          <h3 className="font-semibold text-xl">Customer Details</h3>
-          <p>
-            <span className="font-semibold">Name:</span> {user.displayName}
+        <div className="md:w-1/2 space-y-5">
+          <h3 className="font-bold text-2xl">Customer Details</h3>
+          <p className="text-xl">
+            <span className="font-medium">Name:</span> {user.displayName}
           </p>
-          <p>
-            <span className="font-semibold">E-mail:</span> {user.email}
+          <p className="text-xl">
+            <span className="font-medium">E-mail:</span> {user.email}
           </p>
-          <p>
-            <span className="font-semibold">User ID:</span> {user.uid}
+          <p className="text-xl">
+            <span className="font-medium">User ID:</span> {user.uid}
           </p>
         </div>
-        <div className="md:w-1/2 space-y-3">
-          <h3 className="font-semibold text-xl">Shooping Details</h3>
-          <p>
-            <span className="font-semibold">Total Items:</span> {cart.length}
+        <div className="md:w-1/2 space-y-5">
+          <h3 className="font-bold text-2xl">Shooping Details</h3>
+          <p className="text-xl">
+            <span className="font-medium">Total Items:</span> {cart.length}
           </p>
-          <p>
-            <span className="font-semibold">Total Price:</span> $ {orderTotal.toFixed(2)}
+          <p className="text-xl">
+            <span className="font-medium">Total Price:</span> ${" "}
+            {orderTotal.toFixed(2)}
           </p>
-          <button className="btn bg-green text-white text-lg">Checkout</button>
+          <button className="btn bg-green text-white text-lg">Proceed Checkout</button>
         </div>
       </div>
 
