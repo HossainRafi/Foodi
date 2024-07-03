@@ -2,20 +2,39 @@ import toast, { Toaster } from "react-hot-toast";
 import { useCart } from "../../hooks/useCart";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 export const CartPage = () => {
   const [cart, refetch] = useCart();
   const { user } = useContext(AuthContext);
-
-  // item decrease btn
-  const handleDecrease = (item) => {
-    console.log(item._id);
-  };
+  const [cartItems, setCartItems] = useState([]);
 
   // item increase btn
   const handleIncrease = (item) => {
+    // console.log(item._id);
+    fetch(`http://localhost:5000/carts/${item._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({ quantity: item.quantity + 1 }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const updatedCart = cartItems.map((cartItem) => {
+          if (cartItem.id === item.id) {
+            return { ...cartItem, quantity: cartItem.quantity + 1 };
+          }
+          return cartItem;
+        });
+        refetch();
+        setCartItems(updatedCart);
+      });
+  };
+
+  // item decrease btn
+  const handleDecrease = (item) => {
     console.log(item._id);
   };
 

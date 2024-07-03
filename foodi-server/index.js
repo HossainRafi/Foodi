@@ -53,8 +53,8 @@ async function run() {
     app.get("/carts/:id", async (req, res) => {
       const id = req.params.id;
       const filter = { _id: new ObjectId(id) };
-      const result = await cartCollections.findOne(filter)
-      res.send(result)
+      const result = await cartCollections.findOne(filter);
+      res.send(result);
     });
 
     // delete items from the cart
@@ -63,6 +63,25 @@ async function run() {
       const filter = { _id: new ObjectId(id) };
       const result = await cartCollections.deleteOne(filter);
       res.send(result);
+    });
+
+    // increase (update) cart item quantity
+    app.put("/carts/:id", async (req, res) => {
+      const id = req.params.id;
+      const { quantity } = req.body;
+      const filter = { _id: new ObjectId(id) };
+      const options = { upsert: true };
+
+      const updateDoc = {
+        $set: {
+          quantity: parseInt(quantity, 10),
+        },
+      };
+      const result = await cartCollections.updateOne(
+        filter,
+        updateDoc,
+        options
+      );
     });
 
     // database running or not
