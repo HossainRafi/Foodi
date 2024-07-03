@@ -44,7 +44,7 @@ export const CartPage = () => {
   // item decrease button
   const handleDecrease = (item) => {
     // console.log(item._id);
-  if(item.quantity>1){
+    if (item.quantity > 1) {
       fetch(`http://localhost:5000/carts/${item._id}`, {
         method: "PUT",
         headers: {
@@ -64,12 +64,18 @@ export const CartPage = () => {
           setCartItems(updatedCart);
         });
       refetch();
-  }else{
-    toast.error("Item Can't Be 0");
-  }
+    } else {
+      toast.error("Item Can't Be 0");
+    }
   };
 
-  // delete button
+  // calculate total price
+  const cartSubTotal = cart.reduce((total, item) => {
+    return total + calculatePrice(item);
+  }, 0);
+  const orderTotal = cartSubTotal;
+
+  // item delete button
   const handleDelete = (item) => {
     Swal.fire({
       title: "Are you sure to delete?",
@@ -194,7 +200,7 @@ export const CartPage = () => {
             <span className="font-semibold">Total Items:</span> {cart.length}
           </p>
           <p>
-            <span className="font-semibold">Total Price:</span> $ 0.00
+            <span className="font-semibold">Total Price:</span> $ {orderTotal.toFixed(2)}
           </p>
           <button className="btn bg-green text-white text-lg">Checkout</button>
         </div>
