@@ -17,7 +17,7 @@ export const CartPage = () => {
     return item.price * item.quantity;
   };
 
-  // item increase btn
+  // item increase button
   const handleIncrease = (item) => {
     // console.log(item._id);
     fetch(`http://localhost:5000/carts/${item._id}`, {
@@ -41,28 +41,32 @@ export const CartPage = () => {
     refetch();
   };
 
-  // item decrease btn
+  // item decrease button
   const handleDecrease = (item) => {
     // console.log(item._id);
-    fetch(`http://localhost:5000/carts/${item._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-      body: JSON.stringify({ quantity: item.quantity + 1 }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const updatedCart = cartItems.map((cartItem) => {
-          if (cartItem.id === item.id) {
-            return { ...cartItem, quantity: cartItem.quantity - 1 };
-          }
-          return cartItem;
+  if(item.quantity>1){
+      fetch(`http://localhost:5000/carts/${item._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify({ quantity: item.quantity - 1 }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const updatedCart = cartItems.map((cartItem) => {
+            if (cartItem.id === item.id) {
+              return { ...cartItem, quantity: cartItem.quantity - 1 };
+            }
+            return cartItem;
+          });
+          refetch();
+          setCartItems(updatedCart);
         });
-        refetch();
-        setCartItems(updatedCart);
-      });
-    refetch();
+      refetch();
+  }else{
+    toast.error("Item Can't Be 0");
+  }
   };
 
   // delete button
