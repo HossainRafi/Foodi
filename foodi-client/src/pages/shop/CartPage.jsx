@@ -9,6 +9,16 @@ export const CartPage = () => {
   const [cart, refetch] = useCart();
   const { user } = useContext(AuthContext);
 
+  // item decrease btn
+  const handleDecrease = (item) => {
+    console.log(item._id);
+  };
+
+  // item increase btn
+  const handleIncrease = (item) => {
+    console.log(item._id);
+  };
+
   // delete button
   const handleDelete = (item) => {
     Swal.fire({
@@ -76,13 +86,26 @@ export const CartPage = () => {
                   <td className="text-center">{item.name}</td>
                   {/* quantity increase or decrease */}
                   <td className="text-center">
-                    <button className="btn btn-sm"> - </button>
+                    <button
+                      onClick={() => handleDecrease(item)}
+                      className="btn btn-sm"
+                    >
+                      {" "}
+                      -{" "}
+                    </button>
                     <input
                       type="number"
                       value={item.quantity}
+                      onChange={() => console.log(item.quantity)}
                       className="w-10 mx-2 text-center overflow-hidden appearance-none"
                     />
-                    <button className="btn btn-sm"> + </button>
+                    <button
+                      onClick={() => handleIncrease(item)}
+                      className="btn btn-sm"
+                    >
+                      {" "}
+                      +{" "}
+                    </button>
                   </td>
                   <td className="text-center">$ {item.price}</td>
                   <th className="text-center">
