@@ -1,6 +1,8 @@
 import toast, { Toaster } from "react-hot-toast";
 import { useCart } from "../../hooks/useCart";
-import { FaTrash } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa6";
+import { FaMinus } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -132,10 +134,9 @@ export const CartPage = () => {
                   <td className="text-center">
                     <button
                       onClick={() => handleDecrease(item)}
-                      className="btn btn-sm"
+                      className="btn bg-white btn-sm"
                     >
-                      {" "}
-                      -{" "}
+                      <FaMinus />
                     </button>
                     <input
                       type="number"
@@ -145,10 +146,9 @@ export const CartPage = () => {
                     />
                     <button
                       onClick={() => handleIncrease(item)}
-                      className="btn btn-sm"
+                      className="btn bg-white btn-sm"
                     >
-                      {" "}
-                      +{" "}
+                      <FaPlus />
                     </button>
                   </td>
                   <td className="text-center">
@@ -157,9 +157,9 @@ export const CartPage = () => {
                   <th className="text-center">
                     <button
                       onClick={() => handleDelete(item)}
-                      className="btn-sm"
+                      className="btn bg-white btn-sm"
                     >
-                      <FaTrash className="text-red text-lg" />
+                      <FaTrashAlt className="text-red text-lg" />
                     </button>
                   </th>
                 </tr>
