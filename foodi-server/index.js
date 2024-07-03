@@ -12,7 +12,7 @@ app.use(express.json());
 // mongodb configuration using mongoose
 mongoose
   .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@foodi.1etufpk.mongodb.net/?retryWrites=true&w=majority&appName=foodi`
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@foodi.1etufpk.mongodb.net/foodi?retryWrites=true&w=majority&appName=foodi`
   )
   .then(
     console.log(
