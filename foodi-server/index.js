@@ -23,6 +23,10 @@ mongoose
     console.log("Error occured when connected to mongoDB", error)
   );
 
+// import routes here
+const menuRoutes = require("./api/routes/menuRoutes");
+app.use("/menu", menuRoutes);
+
 // testing surver is running or not
 app.get("/", (req, res) => {
   res.send("Hello World!");
