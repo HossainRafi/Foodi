@@ -15,7 +15,7 @@ export const Cards = ({ item }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleAddCart = (item) => {
+  const handleAddCart = async (item) => {
     const { _id, name, image, price, recipe } = item;
     if (user && user?.email) {
       const cartItem = {
@@ -26,7 +26,7 @@ export const Cards = ({ item }) => {
         price,
         email: user?.email,
       };
-      fetch("http://localhost:5000/carts", {
+     await fetch("http://localhost:5000/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -35,9 +35,12 @@ export const Cards = ({ item }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data.insertedId) {
-            refetch();
+          console.log(data,"test data")
+          if (data?.menuItemId) {
             toast.success("Item Added Successfully !");
+            refetch();
+          }else{
+            toast.error(data?.message || "already exists");
           }
         });
     } else {
