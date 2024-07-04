@@ -23,6 +23,7 @@ export const MainLayout = () => {
           <Footer />
         </div>
       )}
+      
     </div>
   );
 };

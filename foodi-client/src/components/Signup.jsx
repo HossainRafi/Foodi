@@ -5,7 +5,7 @@ import { Login } from "./Login";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
-import { Toaster, toast } from 'react-hot-toast';
+import { Toaster, toast } from "react-hot-toast";
 
 export const Signup = () => {
   const {
@@ -135,9 +135,7 @@ export const Signup = () => {
       <Toaster
         position="top-center"
         toastOptions={{
-          style: {
-            margin: "70px",
-          },
+          duration: 2000,
         }}
       />
     </div>

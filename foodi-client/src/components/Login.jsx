@@ -4,7 +4,7 @@ import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
-import { Toaster, toast } from 'react-hot-toast';
+import { Toaster, toast } from "react-hot-toast";
 
 export const Login = () => {
   const {
@@ -147,9 +147,7 @@ export const Login = () => {
       <Toaster
         position="top-center"
         toastOptions={{
-          style: {
-            margin: "70px",
-          },
+          duration: 2000,
         }}
       />
     </div>

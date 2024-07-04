@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
-import { Toaster, toast } from 'react-hot-toast';
+import { Toaster, toast } from "react-hot-toast";
 
 export const Profile = (user) => {
   const { logOut } = useContext(AuthContext);
@@ -59,9 +59,7 @@ export const Profile = (user) => {
       <Toaster
         position="top-center"
         toastOptions={{
-          style: {
-            margin: "70px",
-          },
+          duration: 2000,
         }}
       />
     </div>

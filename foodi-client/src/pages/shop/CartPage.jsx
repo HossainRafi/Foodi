@@ -94,12 +94,12 @@ export const CartPage = () => {
         fetch(`http://localhost:5000/carts/${item?._id}`, { method: "DELETE" })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data)
+            console.log(data);
             if (data.acknowledgement) {
               toast.success(data.message);
               refetch();
-            }else{
-              toast.error(data.message)
+            } else {
+              toast.error(data.message);
             }
           });
       }
@@ -221,9 +221,7 @@ export const CartPage = () => {
       <Toaster
         position="top-center"
         toastOptions={{
-          style: {
-            margin: "70px",
-          },
+          duration: 2000,
         }}
       />
     </div>
