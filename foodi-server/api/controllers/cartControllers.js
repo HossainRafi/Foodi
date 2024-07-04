@@ -22,9 +22,7 @@ const addToCart = async (req, res) => {
     const existingCartItem = await Carts.findOne({ email, menuItemId });
     // console.log(existingCartItem)
     if (existingCartItem) {
-      return res
-        .status(400)
-        .json({ message: "Already exists in the cart !" });
+      return res.status(400).json({ message: "Already exists in the cart !" });
     }
 
     const cartItem = await Carts.create({
@@ -43,7 +41,22 @@ const addToCart = async (req, res) => {
   }
 };
 
+// delete a cart item
+const deleteCart = async (req, res) => {
+  const cartId = req.params.id;
+  try {
+    const deletedCart = await Carts.findByIdAndDelete(cartId);
+    if (!deletedCart) {
+      return res.status(401).json({ message: "Cart Items Not Found !" });
+    }
+    res.status(200).json({ message: "Cart Item Deleted Successfully !" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getCartByEmail,
   addToCart,
+  deleteCart,
 };
