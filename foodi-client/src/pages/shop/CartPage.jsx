@@ -4,13 +4,18 @@ import { FaTrashAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import Swal from "sweetalert2";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 export const CartPage = () => {
   const [cart, refetch] = useCart();
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
+
+  // page will load from top of the page
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // calculate price
   const calculatePrice = (item) => {
@@ -203,7 +208,9 @@ export const CartPage = () => {
             <span className="font-medium">Total Price:</span> ${" "}
             {orderTotal.toFixed(2)}
           </p>
-          <button className="btn bg-green text-white text-lg">Proceed Checkout</button>
+          <button className="btn bg-green text-white text-lg">
+            Proceed Checkout
+          </button>
         </div>
       </div>
 
