@@ -37,7 +37,7 @@ export const Cards = ({ item }) => {
         .then((data) => {
           if (data.insertedId) {
             refetch();
-            toast.success("Added Successfully !");
+            toast.success("Item Added Successfully !");
           }
         });
     } else {
