@@ -5,6 +5,7 @@ import { Footer } from "../components/Footer";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 import { LoadingSpinner } from "../components/LoadingSpinner";
+import toast, { Toaster } from "react-hot-toast";
 
 export const MainLayout = () => {
   const { loading } = useContext(AuthContext);

@@ -16,11 +16,11 @@ const getCartByEmail = async (req, res) => {
 // post a cart when add-to-cart btn clicked
 const addToCart = async (req, res) => {
   const { menuItemId, name, recipe, image, price, quantity, email } = req.body;
-  // console.log(email)
+  console.log(req?.body,"hdfjsdfjsdkfjsdk")
   try {
     // exiting menu item
     const existingCartItem = await Carts.findOne({ email, menuItemId });
-    // console.log(existingCartItem)
+    console.log(existingCartItem)
     if (existingCartItem) {
       return res.status(400).json({ message: "Already exists in the cart !" });
     }
@@ -47,11 +47,11 @@ const deleteCart = async (req, res) => {
   try {
     const deletedCart = await Carts.findByIdAndDelete(cartId);
     if (!deletedCart) {
-      return res.status(401).json({ message: "Cart Items Not Found !" });
+      return res.status(401).json({ message: "Cart Items Not Found !",acknowledgement:false });
     }
-    res.status(200).json({ message: "Cart Item Deleted Successfully !" });
+    res.status(200).json({ message: "Cart Item Deleted Successfully !",acknowledgement:true });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error.message, acknowledgement:false });
   }
 };
 

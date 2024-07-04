@@ -94,9 +94,12 @@ export const CartPage = () => {
         fetch(`http://localhost:5000/carts/${item?._id}`, { method: "DELETE" })
           .then((res) => res.json())
           .then((data) => {
-            if (data.deletedCount > 0) {
+            console.log(data)
+            if (data.acknowledgement) {
+              toast.success(data.message);
               refetch();
-              toast.success("Remove Successfully !");
+            }else{
+              toast.error(data.message)
             }
           });
       }
