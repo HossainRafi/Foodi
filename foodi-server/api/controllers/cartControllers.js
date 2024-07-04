@@ -55,7 +55,7 @@ const deleteCart = async (req, res) => {
   }
 };
 
-// update a cart item
+// update(increase or decrease) a cart item
 const updateCart = async (req, res) => {
   const cartId = req.params.id;
   const { menuItemId, name, recipe, image, price, quantity, email } = req.body;
