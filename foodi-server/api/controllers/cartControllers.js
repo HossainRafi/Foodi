@@ -55,8 +55,32 @@ const deleteCart = async (req, res) => {
   }
 };
 
+// update a cart item
+const updateCart = async (req, res) => {
+  const cartId = req.params.id;
+  const { menuItemId, name, recipe, image, price, quantity, email } = req.body;
+
+  try {
+    const updatedCart = await Carts.findByIdAndUpdate(
+      cartId,
+      { menuItemId, name, recipe, image, price, quantity, email },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    if (!updatedCart) {
+      return res.status(404).json({ message: "Cart item not found" });
+    }
+    res.status(200).json(updatedCart);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getCartByEmail,
   addToCart,
   deleteCart,
+  updateCart,
 };
