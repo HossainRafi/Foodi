@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-100">
       {/* top footer section */}
       <footer className="footer xl:px-24 py-10 px-4 text-base-content">
         <aside>

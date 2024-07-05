@@ -32,22 +32,20 @@ export const Navbar = () => {
   // navigation item lists
   const navItems = (
     <>
-      <li>
-        <a href="/" className="text-green">
-          Home
-        </a>
+      <li className="text-lg">
+        <a href="/">Home</a>
       </li>
-      <li>
+      <li className="text-lg">
         <details>
           <summary>Menu</summary>
           <ul className="p-2">
-            <li>
+            <li className="text-lg">
               <a href="/menu">All</a>
             </li>
-            <li>
+            <li className="text-lg">
               <a>Salad</a>
             </li>
-            <li>
+            <li className="text-lg">
               <a>Pizza</a>
             </li>
           </ul>
@@ -55,33 +53,31 @@ export const Navbar = () => {
       </li>
       <li tabIndex={0}>
         <details>
-          <summary>Services</summary>
+          <summary className="text-lg">Services</summary>
           <ul className="p-2">
-            <li>
+            <li className="text-lg">
               <a>Online Order</a>
             </li>
-            <li>
+            <li className="text-lg">
               <a>Table Booking</a>
             </li>
-            <li>
+            <li className="text-lg">
               <a>Order Tracking</a>
             </li>
           </ul>
         </details>
       </li>
-      <li>
+      <li className="text-lg">
         <a>Offers</a>
       </li>
     </>
   );
   return (
     <>
-      <header className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out">
+      <header className="max-w-screen-2xl bg-gray-100 container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out">
         <div
           className={`navbar xl:px-24 ${
-            isSticky
-              ? "shadow-md bg-gray-100 transition-all duration-300 ease-in-out"
-              : ""
+            isSticky ? "shadow-md transition-all duration-300 ease-in-out" : ""
           }`}
         >
           <div className="navbar-start">
