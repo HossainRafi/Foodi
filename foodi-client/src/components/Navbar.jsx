@@ -10,9 +10,7 @@ import { useCart } from "../hooks/useCart";
 
 export const Navbar = () => {
   const { user } = useContext(AuthContext);
-  // console.log(user)
   const [cart, refetch] = useCart();
-  // console.log(cart)
 
   // scroll effect for navbar
   const [isSticky, setSticky] = useState(false);

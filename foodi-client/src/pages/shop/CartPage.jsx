@@ -24,7 +24,6 @@ export const CartPage = () => {
 
   // item increase button
   const handleIncrease = (item) => {
-    // console.log(item._id);
     fetch(`http://localhost:5000/carts/${item._id}`, {
       method: "PUT",
       headers: {
@@ -48,7 +47,6 @@ export const CartPage = () => {
 
   // item decrease button
   const handleDecrease = (item) => {
-    // console.log(item._id);
     if (item?.quantity > 1) {
       fetch(`http://localhost:5000/carts/${item._id}`, {
         method: "PUT",

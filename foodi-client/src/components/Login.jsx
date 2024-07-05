@@ -25,7 +25,7 @@ export const Login = () => {
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
-    // console.log(email, password)
+
     login(email, password)
       .then((result) => {
         const user = result.user;
@@ -45,7 +45,7 @@ export const Login = () => {
       .then((result) => {
         const user = result.user;
         // console.log(user)
-        toast.success("Login Successful !");
+        toast.success("Login successful !");
         document.getElementById("my_modal_5").close();
         navigate(from, { replace: true });
       })

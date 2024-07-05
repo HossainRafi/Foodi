@@ -10,7 +10,6 @@ export const Cards = ({ item }) => {
   const [isHeartFillted, setIsHeartFillted] = useState(false);
   const { user } = useContext(AuthContext);
   const [cart, refetch] = useCart();
-  // console.log(user);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -37,15 +36,15 @@ export const Cards = ({ item }) => {
         .then((data) => {
           console.log(data, "test data");
           if (data?.menuItemId) {
-            toast.success("Item Added Successfully !");
+            toast.success("Item added auccessfully !");
             refetch();
           } else {
-            toast.error(data?.message || "already exists");
+            toast.error(data?.message || "Item already exists");
           }
         });
     } else {
       Swal.fire({
-        title: "Please Login First !",
+        title: "Please login first !",
         text: "Can't add food item without login",
         icon: "warning",
         showCancelButton: true,
